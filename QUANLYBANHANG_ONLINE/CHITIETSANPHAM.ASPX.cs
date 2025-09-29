@@ -23,21 +23,23 @@ namespace QUANLYBANHANG_ONLINE
         {
             XULYDULIEU xuly = new XULYDULIEU();
             string masanpham = Request.QueryString.Get("MASANPHAM");
+
             SqlParameter[] pr = new SqlParameter[1];
             pr[0] = new SqlParameter("@MASANPHAM", masanpham);
+
             tbSANPHAM = xuly.getTable("psGetTableSANPHAM", pr);
 
             if (tbSANPHAM != null && tbSANPHAM.Rows.Count > 0)
             {
-                this.Repeater1.DataSource = tbSANPHAM;
-                this.Repeater1.DataBind();
+                Repeater1.DataSource = tbSANPHAM;
+                Repeater1.DataBind();
             }
         }
 
         protected void Imagecart_Click(object sender, ImageClickEventArgs e)
         {
             ImageButton btn = (ImageButton)sender;
-            string masanpham = btn.CommandArgument;
+            string masanpham = btn.CommandArgument; // đây là MASANPHAM từ CommandArgument
 
             XULYDULIEU xuly = new XULYDULIEU();
             SqlParameter[] pr = new SqlParameter[1];
@@ -50,10 +52,12 @@ namespace QUANLYBANHANG_ONLINE
                 double dongia = Convert.ToDouble(tbSANPHAM.Rows[0]["DONGIA"]);
                 string hinhanh = tbSANPHAM.Rows[0]["HINHANH"].ToString();
 
+                // Lấy giỏ hàng từ session hoặc tạo mới
                 CART cart = Session["CART"] as CART ?? new CART();
                 cart.AddCart(masanpham, tensanpham, hinhanh, 1, dongia);
                 Session["CART"] = cart;
 
+                // Chuyển sang trang giỏ hàng
                 Response.Redirect("pageGIOHANG.aspx");
             }
         }
