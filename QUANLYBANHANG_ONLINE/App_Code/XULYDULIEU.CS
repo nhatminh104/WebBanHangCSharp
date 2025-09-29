@@ -130,5 +130,7 @@ namespace QUANLYBANHANG_ONLINE.App_Code
             return getTable(sql);
         }
 
+
+
     }
 }

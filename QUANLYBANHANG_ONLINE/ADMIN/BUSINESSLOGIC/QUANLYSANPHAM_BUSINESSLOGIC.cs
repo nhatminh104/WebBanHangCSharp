@@ -63,7 +63,7 @@ namespace QUANLYBANHANG_ONLINE.ADMIN.BUSINESSLOGIC
             list.Add("@MOTA", mota);
             list.Add("@MADANHMUC", int.Parse(madanhmuc)); // parse sang int
 
-            return processdata.InsertRecord(list); // SP trong PROCESSDATA đã gọi đúng psInsertRecord4SANPHAM
+            return processdata.InsertRecord(list); // SP trong PROCESSDATA đã gọi đúng psInsertRecordSANPHAM
         }
 
         // Cập nhật sản phẩm

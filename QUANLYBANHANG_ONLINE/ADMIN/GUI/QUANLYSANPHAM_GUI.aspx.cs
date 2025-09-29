@@ -70,7 +70,7 @@ namespace QUANLYBANHANG_ONLINE.ADMIN.GUI
                     hinhanh
                 );
 
-                if (k > 0)
+                if (k < 0)
                 {
                     Response.Write("<script>alert('Thêm sản phẩm thành công!');</script>");
                     ClearForm();
